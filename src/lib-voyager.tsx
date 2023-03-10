@@ -13,12 +13,13 @@ import * as ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import {TopLevelSpec} from 'vega-lite';
-import {Data} from 'vega-lite/build/src/data';
+import {Data, InlineData} from 'vega-lite/build/src/data';
 import {FacetedCompositeUnitSpec, isUnitSpec, TopLevel} from 'vega-lite/build/src/spec';
 import * as vlSchema from 'vega-lite/build/vega-lite-schema.json';
-import {isString} from 'vega-util';
-import { REDO, UNDO } from './actions/index';
+import {isArray, isString} from 'vega-util';
+import { datasetLoad, DATASET_RECEIVE, REDO, UNDO } from './actions/index';
 import {App} from './components/app';
+import {AppRoot} from './components/app-root';
 import {State} from './models';
 import {DEFAULT_VOYAGER_CONFIG, VoyagerConfig} from './models/config';
 import {fromSerializable, SerializableState, toSerializable} from './models/index';
@@ -26,6 +27,7 @@ import {selectData} from './selectors/dataset';
 import {selectBookmark} from './selectors/index';
 import {selectMainSpec} from './selectors/result';
 import {configureStore} from './store';
+import {build as buildSchema} from 'compassql/build/src/schema';
 
 
 
@@ -284,4 +286,37 @@ export class Voyager {
  */
 export function CreateVoyager(container: Container, config: VoyagerConfig, data: Data): Voyager {
   return new Voyager(container, config, data);
+}
+
+
+// Josh's raw exports
+
+export { configureStore } from './store';
+export { datasetLoad } from './actions/index';
+// export { AppRoot } from './components/app-root';
+// export { Provider } from 'react-redux';
+export { selectMainSpec, selectData } from './selectors';
+export { build as buildSchema } from 'compassql/build/src/schema';
+export { Action } from './actions';
+
+// Josh's other stuff
+
+// This is required since we need to use the right version of React to render Voyager
+export function renderVoyager(container: Element, store: Store<State>) {
+  ReactDOM.render(
+    <Provider store={store}>
+      <AppRoot />
+    </Provider>,
+    container
+  );
+}
+
+export function updateDataAction(data: InlineData) {
+  if (!isArray(data.values)) {
+    throw new Error('Voyager only supports array values');
+  }
+  return {
+    type: DATASET_RECEIVE,
+    payload: {name: undefined as string, schema: buildSchema(data), data}
+  };
 }

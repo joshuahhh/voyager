@@ -2,7 +2,7 @@
 // https://github.com/Microsoft/TypeScript/issues/9944
 // tslint:disable:no-unused-variable
 import {Store} from 'redux';
-import {GenericState, UndoableStateBase} from '../models/index';
+import {GenericState, toSerializable, UndoableStateBase} from '../models/index';
 // tslint:enable:no-unused-variable
 
 import {applyMiddleware, compose, createStore, Middleware, StoreEnhancer} from 'redux';
@@ -15,7 +15,8 @@ import {createQueryListener} from './listener';
 
 const loggerMiddleware = createLogger({
   collapsed: true,
-  level: 'debug'
+  level: 'debug',
+  stateTransformer: toSerializable,
 });
 
 // define which middleware to use depending on environment

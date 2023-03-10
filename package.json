@@ -115,7 +115,7 @@
     "gh-pages": "^3.2.3",
     "html-webpack-plugin": "4.0.0",
     "jest": "^20",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.1",
     "normalize-scss": "^7.0.1",
     "postcss-loader": "^2.1.6",
     "react-addons-test-utils": "^15.6.2",
@@ -140,7 +140,9 @@
   },
   "resolutions": {
     "@types/react": "^15.7.2",
-    "@types/node": "~8.0.22"
+    "@types/node": "~8.0.22",
+    "canvas": "https://registry.yarnpkg.com/@favware/skip-dependency/-/skip-dependency-1.0.2.tgz",
+    "canvas-prebuilt": "https://registry.yarnpkg.com/@favware/skip-dependency/-/skip-dependency-1.0.2.tgz"
   },
   "jest": {
     "transform": {
