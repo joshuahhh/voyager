@@ -6,6 +6,8 @@ const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const TerserPlugin = require("terser-webpack-plugin");
 var WebpackNotifierPlugin = require('webpack-notifier');
 
+process.env.NODE_ENV = 'production';
+
 const getClientEnvironment = require('./env');
 // Get environment variables to inject into our app.
 var publicUrl = '';
