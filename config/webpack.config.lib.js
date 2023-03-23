@@ -24,7 +24,7 @@ module.exports = {
     chunkFilename: 'static/js/[name].chunk.js',
     sourceMapFilename: '[file].map',
     publicPath: '/build/',
-    library: 'voyager',
+    // library: 'voyager',
     libraryTarget: 'umd',
   },
 
@@ -117,22 +117,22 @@ module.exports = {
   // This is important because it allows us to avoid bundling all of our
   // dependencies, which allows browsers to cache those libraries between builds.
   externals: {
-    "react": "react",
-    "react-dom": "react-dom",
-    "react-css-modules": 'react-css-modules',
-    "react-dnd": "react-dnd",
-    "react-dnd-html5-backend": "react-dnd-html5-backend",
-    "react-redux": "react-redux",
-    "react-tether": "react-tether",
-    "redux": "redux",
-    "redux-thunk": "redux-thunk",
-    "redux-undo": "redux-undo",
-    "vega": "vega",
-    "vega-lite": "vega-lite",
-    "vega-tooltip": "vega-tooltip",
-    "moment": "moment",
-    "font-awesome": "font-awesome",
-    "font-awesome-sass-loader": "font-awesome-sass-loader"
+    // "react": "react",
+    // "react-dom": "react-dom",
+    // "react-css-modules": 'react-css-modules',
+    // "react-dnd": "react-dnd",
+    // "react-dnd-html5-backend": "react-dnd-html5-backend",
+    // "react-redux": "react-redux",
+    // "react-tether": "react-tether",
+    // "redux": "redux",
+    // "redux-thunk": "redux-thunk",
+    // "redux-undo": "redux-undo",
+    // "vega": "vega",
+    // "vega-lite": "vega-lite",
+    // "vega-tooltip": "vega-tooltip",
+    // "moment": "moment",
+    // "font-awesome": "font-awesome",
+    // "font-awesome-sass-loader": "font-awesome-sass-loader"
   },
   plugins: [
     // Makes some environment variables available to the JS code, for example:
@@ -156,7 +156,7 @@ module.exports = {
   },
   mode: 'none',
   optimization: {
-    minimize: true,
+    // minimize: true,
     minimizer: [new TerserPlugin({
       terserOptions: {
         format: {
